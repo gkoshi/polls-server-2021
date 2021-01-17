@@ -1,22 +1,21 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const { CITY_ROUTE_PATHS } = require("./route-enums");
-
+const { CITY_ROUTE_PATHS } = require('./route-enums');
 const {
   createCity,
   editCity,
   deleteCity,
   getCityById,
   getAllCities,
-} = require("../controllers/city-controller");
+} = require('../controllers/city-controller');
 
 const {
   createCityValidationRules,
   editCityValidationRules,
-} = require("../validators/city-validator");
+} = require('../validators/city-validator');
 
-const { validate } = require("../validators/validate");
+const { validate } = require('../validators/validate');
 
 router.post(
   CITY_ROUTE_PATHS.CREATE_CITY,

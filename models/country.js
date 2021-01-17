@@ -1,7 +1,7 @@
-const db = require("../config/db");
-const type = require("sequelize/lib/data-types");
+const db = require('../config/db');
+const type = require('sequelize/lib/data-types');
 
-const countryModel = db.define("countries", {
+const countryModel = db.define('country', {
   id: {
     type: type.INTEGER(11),
     primaryKey: true,
