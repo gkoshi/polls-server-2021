@@ -24,5 +24,8 @@ router.use('/question-limit', quesitonLimitRoutes);
 router.use('/question-options', questionOptionsRoutes);
 router.use('/question', questionRoutes);
 router.use('/users', userRoutes);
+router.get("/servertest", (req, res) => {
+  res.send("Server is up and running");
+});
 
 module.exports = router;
