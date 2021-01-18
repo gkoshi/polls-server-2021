@@ -24,7 +24,7 @@ app.use((error, req, res, next) => {
 });
 
 const db = require("./config/db");
-const port = process.env.port || 8000;
+const port = process.env.port || 5000;
 
 (async () => {
   try {
