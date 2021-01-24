@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { AGENT_ROUTE_PATHS } = require('./route-enums');
+const { AGENT_ROUTE_PATHS } = require("./route-enums");
 const {
   createAgent,
   editAgent,
   deleteAgent,
   getAgentById,
   getAllAgents,
-} = require('../controllers/agents-controller');
+} = require("../controllers/agents-controller");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(AGENT_ROUTE_PATHS.CREATE_AGENT, validate, createAgent);
 

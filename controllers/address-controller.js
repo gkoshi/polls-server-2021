@@ -5,9 +5,9 @@ const createAddress = async (req, res, next) => {
 
   try {
     await Address.create({
-        city_id,
-        country_id,
-        name,
+      city_id,
+      country_id,
+      name,
     });
   } catch (err) {
     console.log(err);
@@ -38,9 +38,9 @@ const editAddress = async (req, res, next) => {
   try {
     await Address.update(
       {
-          city_id,
-          country_id,
-          name,
+        city_id,
+        country_id,
+        name,
       },
       {
         where: { id },

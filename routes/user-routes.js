@@ -1,7 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { USER_ROUTES_PATHS } = require('./route-enums');
+const { USER_ROUTES_PATHS } = require("./route-enums");
 const {
   registerUser,
   loginUser,
@@ -9,16 +9,16 @@ const {
   deleteUser,
   getUserById,
   getAllUsers,
-} = require('../controllers/user-controller');
+} = require("../controllers/user-controller");
 
 const {
   registerUserValidationRules,
   deleteUserValidationRules,
   loginUserValidationRules,
   editUserValidationRules,
-} = require('../validators/user-validator');
+} = require("../validators/user-validator");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(
   USER_ROUTES_PATHS.REGISTER_USER,

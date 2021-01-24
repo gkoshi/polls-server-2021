@@ -1,4 +1,4 @@
-const Agents = require('../models/agents');
+const Agents = require("../models/agents");
 
 const createAgent = async (req, res, next) => {
   const { name, phone, code } = req.body;
@@ -11,10 +11,10 @@ const createAgent = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(200).json({ message: 'Agent created successfully' });
+  res.status(200).json({ message: "Agent created successfully" });
 };
 
 const editAgent = async (req, res, next) => {
@@ -28,7 +28,7 @@ const editAgent = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!agent) {
@@ -48,10 +48,10 @@ const editAgent = async (req, res, next) => {
     );
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(201).json({ message: 'Agent updated successfully' });
+  res.status(201).json({ message: "Agent updated successfully" });
 };
 
 const deleteAgent = async (req, res, next) => {
@@ -64,7 +64,7 @@ const deleteAgent = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!agent) {
@@ -77,10 +77,10 @@ const deleteAgent = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Could not delete agent' });
+    return res.status(400).json({ message: "Could not delete agent" });
   }
 
-  res.status(200).json({ message: 'Agent deleted successfully' });
+  res.status(200).json({ message: "Agent deleted successfully" });
 };
 
 const getAgentById = async (req, res, next) => {
@@ -93,7 +93,7 @@ const getAgentById = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
   id;
   // there is a no user with this id
@@ -110,7 +110,7 @@ const getAllAgents = async (req, res, next) => {
     agents = await Agents.findAll();
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Could not fetch all agents' });
+    return res.status(400).json({ message: "Could not fetch all agents" });
   }
 
   res.status(200).json({ agents });

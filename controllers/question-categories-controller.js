@@ -1,4 +1,4 @@
-const QuestionCategories = require('../models/question-categories');
+const QuestionCategories = require("../models/question-categories");
 
 const createQuestionCategory = async (req, res, next) => {
   const { name } = req.body;
@@ -9,10 +9,10 @@ const createQuestionCategory = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(200).json({ message: 'Question category created successfully' });
+  res.status(200).json({ message: "Question category created successfully" });
 };
 
 const editQuestionCategory = async (req, res, next) => {
@@ -26,7 +26,7 @@ const editQuestionCategory = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!questionCategory) {
@@ -44,10 +44,10 @@ const editQuestionCategory = async (req, res, next) => {
     );
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(201).json({ message: 'Question category updated successfully' });
+  res.status(201).json({ message: "Question category updated successfully" });
 };
 
 const deleteQuestionCategory = async (req, res, next) => {
@@ -60,7 +60,7 @@ const deleteQuestionCategory = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!questionCategory) {
@@ -75,10 +75,10 @@ const deleteQuestionCategory = async (req, res, next) => {
     console.log(err);
     return res
       .status(400)
-      .json({ message: 'Could not delete question category' });
+      .json({ message: "Could not delete question category" });
   }
 
-  res.status(200).json({ message: 'Question category deleted successfully' });
+  res.status(200).json({ message: "Question category deleted successfully" });
 };
 
 const getQuestionCategoryById = async (req, res, next) => {
@@ -91,7 +91,7 @@ const getQuestionCategoryById = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   // there is a no user with this id
@@ -110,7 +110,7 @@ const getAllQuestionCategories = async (req, res, next) => {
     console.log(err);
     return res
       .status(400)
-      .json({ message: 'Could not fetch all question categories' });
+      .json({ message: "Could not fetch all question categories" });
   }
 
   res.status(200).json({ questionCategories });

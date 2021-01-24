@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { QUESTION_CATEGORY_ROUTE_PATHS } = require('./route-enums');
+const { QUESTION_CATEGORY_ROUTE_PATHS } = require("./route-enums");
 const {
   createQuestionCategory,
   editQuestionCategory,
   deleteQuestionCategory,
   getQuestionCategoryById,
   getAllQuestionCategories,
-} = require('../controllers/question-categories-controller');
+} = require("../controllers/question-categories-controller");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(
   QUESTION_CATEGORY_ROUTE_PATHS.CREATE_QUESTION_CATEGORY,

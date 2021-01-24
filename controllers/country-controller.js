@@ -1,4 +1,4 @@
-const Country = require('../models/country');
+const Country = require("../models/country");
 
 const createCountry = async (req, res, next) => {
   const { name, code, population } = req.body;
@@ -11,10 +11,10 @@ const createCountry = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(200).json({ message: 'Country created successfully' });
+  res.status(200).json({ message: "Country created successfully" });
 };
 
 const editCountry = async (req, res, next) => {
@@ -28,7 +28,7 @@ const editCountry = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!country) {
@@ -48,10 +48,10 @@ const editCountry = async (req, res, next) => {
     );
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(201).json({ message: 'Country updated successfully' });
+  res.status(201).json({ message: "Country updated successfully" });
 };
 
 const deleteCountry = async (req, res, next) => {
@@ -64,7 +64,7 @@ const deleteCountry = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!country) {
@@ -77,10 +77,10 @@ const deleteCountry = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Could not delete country' });
+    return res.status(400).json({ message: "Could not delete country" });
   }
 
-  res.status(200).json({ message: 'Country deleted successfully' });
+  res.status(200).json({ message: "Country deleted successfully" });
 };
 
 const getCountryById = async (req, res, next) => {
@@ -93,7 +93,7 @@ const getCountryById = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   // there is a no user with this id
@@ -107,10 +107,12 @@ const getCountryById = async (req, res, next) => {
 const getAllCountries = async (req, res, next) => {
   let countries;
   try {
-    countries = await Country.findAll();
+    countries = await Country.findAll({
+      order: [["id", "DESC"]],
+    });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Could not fetch all countries' });
+    return res.status(400).json({ message: "Could not fetch all countries" });
   }
 
   res.status(200).json({ countries });

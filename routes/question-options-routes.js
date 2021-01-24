@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { QUESTION_OPTIONS_ROUTE_PATHS } = require('./route-enums');
+const { QUESTION_OPTIONS_ROUTE_PATHS } = require("./route-enums");
 const {
   createQuestionOption,
   editQuestionOption,
   deleteQuestionOption,
   getQuestionOptionById,
   getAllQuestionOptions,
-} = require('../controllers/question-options-controller');
+} = require("../controllers/question-options-controller");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(
   QUESTION_OPTIONS_ROUTE_PATHS.CREATE_QUESTION_OPTION,

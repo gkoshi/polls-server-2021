@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { COUNTRY_ROUTE_PATHS } = require('./route-enums');
+const { COUNTRY_ROUTE_PATHS } = require("./route-enums");
 const {
   createCountry,
   editCountry,
   deleteCountry,
   getCountryById,
   getAllCountries,
-} = require('../controllers/country-controller');
+} = require("../controllers/country-controller");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(COUNTRY_ROUTE_PATHS.CREATE_COUNTRY, validate, createCountry);
 

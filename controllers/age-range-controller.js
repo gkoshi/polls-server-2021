@@ -1,4 +1,4 @@
-const AgeRange = require('../models/age-range');
+const AgeRange = require("../models/age-range");
 
 const createAgeRange = async (req, res, next) => {
   const { start, end } = req.body;
@@ -10,10 +10,10 @@ const createAgeRange = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(200).json({ message: 'Age range created successfully' });
+  res.status(200).json({ message: "Age range created successfully" });
 };
 
 const editAgeRange = async (req, res, next) => {
@@ -27,7 +27,7 @@ const editAgeRange = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!ageRange) {
@@ -46,10 +46,10 @@ const editAgeRange = async (req, res, next) => {
     );
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(201).json({ message: 'Age range updated successfully' });
+  res.status(201).json({ message: "Age range updated successfully" });
 };
 
 const deleteAgeRange = async (req, res, next) => {
@@ -62,7 +62,7 @@ const deleteAgeRange = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!ageRange) {
@@ -75,10 +75,10 @@ const deleteAgeRange = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Could not delete age range' });
+    return res.status(400).json({ message: "Could not delete age range" });
   }
 
-  res.status(200).json({ message: 'Age range deleted successfully' });
+  res.status(200).json({ message: "Age range deleted successfully" });
 };
 
 const getAgeRangeById = async (req, res, next) => {
@@ -91,7 +91,7 @@ const getAgeRangeById = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
   id;
   // there is a no user with this id
@@ -108,7 +108,7 @@ const getAllAgeRanges = async (req, res, next) => {
     ageRanges = await AgeRange.findAll();
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Could not fetch all age ranges' });
+    return res.status(400).json({ message: "Could not fetch all age ranges" });
   }
 
   res.status(200).json({ ageRanges });

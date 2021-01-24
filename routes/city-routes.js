@@ -1,21 +1,22 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { CITY_ROUTE_PATHS } = require('./route-enums');
+const { CITY_ROUTE_PATHS } = require("./route-enums");
 const {
   createCity,
   editCity,
   deleteCity,
   getCityById,
   getAllCities,
-} = require('../controllers/city-controller');
+  getCityByCountryId
+} = require("../controllers/city-controller");
 
 const {
   createCityValidationRules,
   editCityValidationRules,
-} = require('../validators/city-validator');
+} = require("../validators/city-validator");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(
   CITY_ROUTE_PATHS.CREATE_CITY,
@@ -34,6 +35,8 @@ router.put(
 router.delete(CITY_ROUTE_PATHS.DELETE_CITY, deleteCity);
 
 router.get(CITY_ROUTE_PATHS.GET_CITY_BY_ID, getCityById);
+
+router.get(CITY_ROUTE_PATHS.GET_CITIES_BY_COUNTRY_ID, getCityByCountryId);
 
 router.get(CITY_ROUTE_PATHS.GET_ALL_CITIES, getAllCities);
 

@@ -1,4 +1,4 @@
-const QuestionLimit = require('../models/question-limit');
+const QuestionLimit = require("../models/question-limit");
 
 const createQuestionLimit = async (req, res, next) => {
   const {
@@ -21,10 +21,10 @@ const createQuestionLimit = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(200).json({ message: 'Question limit created successfully' });
+  res.status(200).json({ message: "Question limit created successfully" });
 };
 
 const editQuestionLimit = async (req, res, next) => {
@@ -45,7 +45,7 @@ const editQuestionLimit = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!questionLimit) {
@@ -68,10 +68,10 @@ const editQuestionLimit = async (req, res, next) => {
     );
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(201).json({ message: 'Question limit updated successfully' });
+  res.status(201).json({ message: "Question limit updated successfully" });
 };
 
 const deleteQuestionLimit = async (req, res, next) => {
@@ -84,7 +84,7 @@ const deleteQuestionLimit = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!questionLimit) {
@@ -97,10 +97,10 @@ const deleteQuestionLimit = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Could not delete question limit' });
+    return res.status(400).json({ message: "Could not delete question limit" });
   }
 
-  res.status(200).json({ message: 'Question limit deleted successfully' });
+  res.status(200).json({ message: "Question limit deleted successfully" });
 };
 
 const getQuestionLimitById = async (req, res, next) => {
@@ -113,7 +113,7 @@ const getQuestionLimitById = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   // there is a no user with this id

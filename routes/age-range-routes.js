@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { AGE_RANGE_ROUTE_PATHS } = require('./route-enums');
+const { AGE_RANGE_ROUTE_PATHS } = require("./route-enums");
 const {
   createAgeRange,
   editAgeRange,
   deleteAgeRange,
   getAgeRangeById,
   getAllAgeRanges,
-} = require('../controllers/age-range-controller');
+} = require("../controllers/age-range-controller");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(AGE_RANGE_ROUTE_PATHS.CREATE_AGE_RANGE, validate, createAgeRange);
 

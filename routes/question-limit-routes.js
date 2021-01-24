@@ -1,15 +1,15 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { QUESTION_LIMIT_ROUTE_PATHS } = require('./route-enums');
+const { QUESTION_LIMIT_ROUTE_PATHS } = require("./route-enums");
 const {
   createQuestionLimit,
   editQuestionLimit,
   deleteQuestionLimit,
   getQuestionLimitById,
-} = require('../controllers/question-limit-controller');
+} = require("../controllers/question-limit-controller");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(
   QUESTION_LIMIT_ROUTE_PATHS.CREATE_QUESTION_LIMIT,

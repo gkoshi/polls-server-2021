@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { ANSWER_ROUTE_PATHS } = require('./route-enums');
+const { ANSWER_ROUTE_PATHS } = require("./route-enums");
 const {
   createAnswer,
   editAnswer,
   deleteAnswer,
   getAnswerById,
   getAllAnswers,
-} = require('../controllers/answers-controller');
+} = require("../controllers/answers-controller");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(ANSWER_ROUTE_PATHS.CREATE_ANSWER, validate, createAnswer);
 

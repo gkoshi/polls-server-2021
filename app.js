@@ -7,7 +7,7 @@ const app = express();
 // config
 app.use(cors());
 app.use(express.json());
-app.use(express.static("/uploads"));
+app.use(express.static("uploads"));
 dotenv.config();
 
 // routing
@@ -29,8 +29,10 @@ const port = process.env.port || 5000;
 (async () => {
   try {
     await db.authenticate();
+    require("./config/relations")(db);
     app.listen(port, () => console.log(`Server started in port: ${port}`));
   } catch (err) {
+    console.log(err);
     console.log("Server could not start");
   }
 })();

@@ -1,4 +1,4 @@
-const QuestionOptions = require('../models/question-options');
+const QuestionOptions = require("../models/question-options");
 
 const createQuestionOption = async (req, res, next) => {
   const {
@@ -23,10 +23,10 @@ const createQuestionOption = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(200).json({ message: 'Question option created successfully' });
+  res.status(200).json({ message: "Question option created successfully" });
 };
 
 const editQuestionOption = async (req, res, next) => {
@@ -48,7 +48,7 @@ const editQuestionOption = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!questionOption) {
@@ -72,10 +72,10 @@ const editQuestionOption = async (req, res, next) => {
     );
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(201).json({ message: 'Question option updated successfully' });
+  res.status(201).json({ message: "Question option updated successfully" });
 };
 
 const deleteQuestionOption = async (req, res, next) => {
@@ -88,7 +88,7 @@ const deleteQuestionOption = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!questionOption) {
@@ -103,10 +103,10 @@ const deleteQuestionOption = async (req, res, next) => {
     console.log(err);
     return res
       .status(400)
-      .json({ message: 'Could not delete question option' });
+      .json({ message: "Could not delete question option" });
   }
 
-  res.status(200).json({ message: 'Question option deleted successfully' });
+  res.status(200).json({ message: "Question option deleted successfully" });
 };
 
 const getQuestionOptionById = async (req, res, next) => {
@@ -119,7 +119,7 @@ const getQuestionOptionById = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   // there is a no user with this id
@@ -138,7 +138,7 @@ const getAllQuestionOptions = async (req, res, next) => {
     console.log(err);
     return res
       .status(400)
-      .json({ message: 'Could not fetch all question options' });
+      .json({ message: "Could not fetch all question options" });
   }
 
   res.status(200).json({ questionOptions });

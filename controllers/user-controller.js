@@ -60,7 +60,12 @@ const loginUser = async (req, res, next) => {
     return res.status(422).json({ message: "Invalid data" });
   }
 
-  const token = generateToken({ id: user.id });
+  const token = generateToken({
+    id: user.id,
+    name: user.name,
+    lastname: user.lastname,
+    email: user.email,
+  });
 
   res
     .status(200)

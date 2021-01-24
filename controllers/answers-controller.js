@@ -1,4 +1,4 @@
-const Answers = require('../models/answers');
+const Answers = require("../models/answers");
 
 const createAnswer = async (req, res, next) => {
   const { question_id, option, created_by, modified_by } = req.body;
@@ -12,10 +12,10 @@ const createAnswer = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(200).json({ message: 'Answer created successfully' });
+  res.status(200).json({ message: "Answer created successfully" });
 };
 
 const editAnswer = async (req, res, next) => {
@@ -29,7 +29,7 @@ const editAnswer = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!answer) {
@@ -50,10 +50,10 @@ const editAnswer = async (req, res, next) => {
     );
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(201).json({ message: 'Answer updated successfully' });
+  res.status(201).json({ message: "Answer updated successfully" });
 };
 
 const deleteAnswer = async (req, res, next) => {
@@ -66,7 +66,7 @@ const deleteAnswer = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
 
   if (!answer) {
@@ -79,10 +79,10 @@ const deleteAnswer = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Could not delete answer' });
+    return res.status(400).json({ message: "Could not delete answer" });
   }
 
-  res.status(200).json({ message: 'Answer deleted successfully' });
+  res.status(200).json({ message: "Answer deleted successfully" });
 };
 
 const getAnswerById = async (req, res, next) => {
@@ -95,7 +95,7 @@ const getAnswerById = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Something went wrong' });
+    return res.status(400).json({ message: "Something went wrong" });
   }
   id;
   // there is a no user with this id
@@ -112,7 +112,7 @@ const getAllAnswers = async (req, res, next) => {
     answers = await Answers.findAll();
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: 'Could not fetch all answers' });
+    return res.status(400).json({ message: "Could not fetch all answers" });
   }
 
   res.status(200).json({ answers });

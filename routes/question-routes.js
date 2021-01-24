@@ -1,20 +1,22 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { QUESTION_ROUTE_PATHS } = require('./route-enums');
+const { QUESTION_ROUTE_PATHS } = require("./route-enums");
 const {
   createQuestion,
   editQuestion,
   deleteQuestion,
   getQuestionById,
   getAllQuestions,
-} = require('../controllers/question-controller');
+} = require("../controllers/question-controller");
 
-const { validate } = require('../validators/validate');
+const { imageUpload } = require("../middlewares/file-upload");
 
-router.post(QUESTION_ROUTE_PATHS.CREATE_QUESTION, validate, createQuestion);
+const { validate } = require("../validators/validate");
 
-router.put(QUESTION_ROUTE_PATHS.EDIT_QUESTION, validate, editQuestion);
+router.post(QUESTION_ROUTE_PATHS.CREATE_QUESTION, imageUpload.single("image"), validate, createQuestion);
+
+router.put(QUESTION_ROUTE_PATHS.EDIT_QUESTION, imageUpload.single("image"), validate, editQuestion);
 
 router.delete(QUESTION_ROUTE_PATHS.DELETE_QUESTION, deleteQuestion);
 

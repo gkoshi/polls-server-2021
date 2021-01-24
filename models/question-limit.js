@@ -1,7 +1,7 @@
-const type = require('sequelize/lib/data-types');
-const db = require('../config/db');
+const type = require("sequelize/lib/data-types");
+const db = require("../config/db");
 
-const questionLimitModel = db.define('question_limit', {
+const questionLimitModel = db.define("question_limit", {
   id: {
     type: type.INTEGER(11),
     primaryKey: true,

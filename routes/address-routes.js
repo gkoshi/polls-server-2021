@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { ADDRESS_ROUTE_PATHS } = require('./route-enums');
+const { ADDRESS_ROUTE_PATHS } = require("./route-enums");
 const {
   createAddress,
   editAddress,
   deleteAddress,
   getAddressById,
   getAllAddresses,
-} = require('../controllers/address-controller');
+} = require("../controllers/address-controller");
 
-const { validate } = require('../validators/validate');
+const { validate } = require("../validators/validate");
 
 router.post(ADDRESS_ROUTE_PATHS.CREATE_ADDRESS, validate, createAddress);
 

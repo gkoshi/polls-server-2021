@@ -1,7 +1,7 @@
-const type = require('sequelize/lib/data-types');
-const db = require('../config/db');
+const type = require("sequelize/lib/data-types");
+const db = require("../config/db");
 
-const questionModel = db.define('question', {
+const questionModel = db.define("question", {
   id: {
     type: type.INTEGER(11),
     primaryKey: true,
@@ -10,13 +10,19 @@ const questionModel = db.define('question', {
   question: {
     type: type.STRING(255),
   },
+  image: {
+    type: type.STRING(255),
+  },
   country_id: {
     type: type.INTEGER(11),
   },
   city_id: {
     type: type.INTEGER(11),
   },
-  question_category: {
+  range: {
+    type: type.INTEGER(11),
+  },
+  category: {
     type: type.INTEGER(11),
   },
   created_by: {

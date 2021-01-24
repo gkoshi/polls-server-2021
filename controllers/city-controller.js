@@ -1,4 +1,5 @@
 const City = require("../models/city");
+const Country = require("../models/country");
 
 const createCity = async (req, res, next) => {
   const { name, country_id, population } = req.body;
@@ -89,6 +90,11 @@ const getCityById = async (req, res, next) => {
   let city;
   try {
     city = await City.findOne({
+      include: [
+        {
+          model: Country,
+        },
+      ],
       where: { id },
     });
   } catch (err) {
@@ -104,10 +110,38 @@ const getCityById = async (req, res, next) => {
   res.status(200).json({ city: city });
 };
 
+const getCityByCountryId = async (req, res, next) => {
+  const { id } = req.params;
+
+  let cities;
+  try {
+    cities = await City.findAll({
+      where: { country_id: id },
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ message: "Something went wrong" });
+  }
+  id;
+  // there is a no user with this id
+  if (!cities) {
+    return res.status(422).json({ message: "City doesn't exist" });
+  }
+
+  res.status(200).json({ cities: cities });
+};
+
 const getAllCities = async (req, res, next) => {
   let cities;
   try {
-    cities = await City.findAll();
+    cities = await City.findAll({
+      include: [
+        {
+          model: Country,
+        },
+      ],
+      order: [["id", "DESC"]],
+    });
   } catch (err) {
     console.log(err);
     return res.status(400).json({ message: "Could not fetch all cities" });
@@ -122,4 +156,5 @@ module.exports = {
   deleteCity,
   getCityById,
   getAllCities,
+  getCityByCountryId
 };

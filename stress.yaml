@@ -1,0 +1,18 @@
+config:
+  target: https://v1.ev-thermo-stress.apps.rightbrain.cloud
+  phases:
+    - duration: 15
+      arrivalCount: 750
+  defaults:
+    headers:
+      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2MTM5ODY1ODgsInJvbGUiOiJBZG1pbmlzdHJhdG9yLHRlc3RSaWdodGJyYWluLEF0dGVuZGVlIiwidXNlcl9pZCI6Njd9.M_Z6Q0gbRH00YDhhBcnTmYL8M9QL1kPZvvaI8A3seXU"
+  http:
+    timeout: 10
+scenarios:
+  - flow:
+      - get:
+          url: "/api/v1/booths/"
+      - get:
+          url: "/api/v1/sessions/"
+      - get:
+          url: "/api/v1/boothSessions/myBoothSessions"
