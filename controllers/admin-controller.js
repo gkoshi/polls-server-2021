@@ -1,15 +1,17 @@
-const User = require("../models/user");
+const { Op } = require("sequelize");
+
+const Admin = require("../models/admin");
 const generateToken = require("../utils/generate-token");
 const hashPassword = require("../utils/hash-password");
 const matchPassword = require("../utils/match-password");
 
-const registerUser = async (req, res, next) => {
+const registerAdmin = async (req, res, next) => {
   const { name, lastname, username, email, password } = req.body;
 
   // check if email exists
   let emailExists;
   try {
-    emailExists = await User.findOne({ where: { email } });
+    emailExists = await Admin.findOne({ where: { email } });
   } catch (err) {
     console.log(err);
     return res.status(400).json({ message: "Something went wrong" });
@@ -24,7 +26,7 @@ const registerUser = async (req, res, next) => {
 
   // create user
   try {
-    await User.create({
+    await Admin.create({
       name,
       lastname,
       username,
@@ -39,12 +41,12 @@ const registerUser = async (req, res, next) => {
   res.status(200).json({ message: "User registered successfully" });
 };
 
-const loginUser = async (req, res, next) => {
+const loginAdmin = async (req, res, next) => {
   const { email, password } = req.body;
 
-  let user;
+  let admin;
   try {
-    user = await User.findOne({
+    admin = await Admin.findOne({
       where: { email },
     });
   } catch (err) {
@@ -52,35 +54,53 @@ const loginUser = async (req, res, next) => {
     return res.status(400).json({ message: "Something went wrong" });
   }
 
-  if (!user) {
+  if (!admin) {
     return res.status(422).json({ message: "Invalid data" });
   }
 
-  if (!(await matchPassword(password, user.password))) {
+  if (!(await matchPassword(password, Admin.password))) {
     return res.status(422).json({ message: "Invalid data" });
   }
 
   const token = generateToken({
-    id: user.id,
-    name: user.name,
-    lastname: user.lastname,
-    email: user.email,
+    id: Admin.id,
+    name: Admin.name,
+    lastname: Admin.lastname,
+    email: Admin.email,
   });
 
   res
     .status(200)
-    .json({ message: "User logged in successfully", token: token });
+    .json({ message: "Adnmin logged in successfully", token: token });
 };
 
-const editUser = async (req, res, next) => {
+const editAdmin = async (req, res, next) => {
   const { id } = req.params;
-  const { name, lastname } = req.body;
+  const { name, lastname, email, username } = req.body;
+
+  // check if email exists
+  let emailExists;
+  try {
+    emailExists = await Admin.findOne({
+      where: { email, id: { [Op.ne]: id } },
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ message: "Something went wrong" });
+  }
+
+  // there is a user with this email
+  if (emailExists) {
+    return res.status(422).json({ message: "Email already exists" });
+  }
 
   try {
-    await User.update(
+    await Admin.update(
       {
         name,
         lastname,
+        email,
+        username,
       },
       {
         where: {
@@ -93,15 +113,15 @@ const editUser = async (req, res, next) => {
     return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(200).json({ message: "User edited successfully" });
+  res.status(200).json({ message: "Admin edited successfully" });
 };
 
-const deleteUser = async (req, res, next) => {
-  const { id } = req.body;
+const deleteAdmin = async (req, res, next) => {
+  const { id } = req.params;
 
-  let user;
+  let admin;
   try {
-    user = await User.findOne({
+    admin = await Admin.findOne({
       where: { id },
     });
   } catch (err) {
@@ -110,12 +130,12 @@ const deleteUser = async (req, res, next) => {
   }
 
   // there is a no user with this id
-  if (!user) {
-    return res.status(422).json({ message: "User doesn't exist" });
+  if (!admin) {
+    return res.status(422).json({ message: "Admin doesn't exist" });
   }
 
   try {
-    await User.destroy({
+    await Admin.destroy({
       where: { id },
     });
   } catch (err) {
@@ -123,15 +143,15 @@ const deleteUser = async (req, res, next) => {
     return res.status(400).json({ message: "Could not delete the user" });
   }
 
-  res.status(200).json({ message: "User deleted successfully" });
+  res.status(200).json({ message: "Admin deleted successfully" });
 };
 
-const getUserById = async (req, res, next) => {
+const getAdminById = async (req, res, next) => {
   const { id } = req.params;
 
-  let user;
+  let admin;
   try {
-    user = await User.findOne({
+    admin = await Admin.findOne({
       attributes: {
         exclude: ["password"],
       },
@@ -143,34 +163,34 @@ const getUserById = async (req, res, next) => {
   }
 
   // there is a no user with this id
-  if (!user) {
+  if (!admin) {
     return res.status(422).json({ message: "User doesn't exist" });
   }
 
-  res.status(200).json({ user: user });
+  res.status(200).json({ admin: admin });
 };
 
-const getAllUsers = async (req, res, next) => {
-  let users;
+const getAllAdmins = async (req, res, next) => {
+  let admins;
   try {
-    users = await User.findAll({
+    admins = await Admin.findAll({
       attributes: {
         exclude: ["password"],
       },
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ message: "Could not fetch all users" });
+    return res.status(400).json({ message: "Could not fetch all admins" });
   }
 
-  res.status(200).json({ users: users });
+  res.status(200).json({ admins: admins });
 };
 
 module.exports = {
-  registerUser,
-  loginUser,
-  editUser,
-  deleteUser,
-  getUserById,
-  getAllUsers,
+  registerAdmin,
+  loginAdmin,
+  editAdmin,
+  deleteAdmin,
+  getAdminById,
+  getAllAdmins,
 };

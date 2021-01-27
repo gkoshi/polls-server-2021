@@ -1,7 +1,7 @@
 const db = require("../config/db");
 const type = require("sequelize/lib/data-types");
 
-const userModel = db.define("users", {
+const adminModel = db.define("admins", {
   id: {
     type: type.INTEGER(11),
     primaryKey: true,
@@ -25,4 +25,4 @@ const userModel = db.define("users", {
   },
 });
 
-module.exports = userModel;
+module.exports = adminModel;

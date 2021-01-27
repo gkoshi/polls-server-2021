@@ -3,6 +3,7 @@ const { v4: uuid } = require("uuid");
 
 const MIME_TYPE_MAP_FILE = {
   "application/pdf": "pdf",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "xlsx",
 };
 
 const fileUpload = multer({

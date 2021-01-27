@@ -14,9 +14,19 @@ const { imageUpload } = require("../middlewares/file-upload");
 
 const { validate } = require("../validators/validate");
 
-router.post(QUESTION_ROUTE_PATHS.CREATE_QUESTION, imageUpload.single("image"), validate, createQuestion);
+router.post(
+  QUESTION_ROUTE_PATHS.CREATE_QUESTION,
+  imageUpload.single("image"),
+  validate,
+  createQuestion
+);
 
-router.put(QUESTION_ROUTE_PATHS.EDIT_QUESTION, imageUpload.single("image"), validate, editQuestion);
+router.put(
+  QUESTION_ROUTE_PATHS.EDIT_QUESTION,
+  imageUpload.single("image"),
+  validate,
+  editQuestion
+);
 
 router.delete(QUESTION_ROUTE_PATHS.DELETE_QUESTION, deleteQuestion);
 

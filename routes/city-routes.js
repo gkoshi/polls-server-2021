@@ -8,7 +8,7 @@ const {
   deleteCity,
   getCityById,
   getAllCities,
-  getCityByCountryId
+  getCityByCountryId,
 } = require("../controllers/city-controller");
 
 const {

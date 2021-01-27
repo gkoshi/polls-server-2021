@@ -156,5 +156,5 @@ module.exports = {
   deleteCity,
   getCityById,
   getAllCities,
-  getCityByCountryId
+  getCityByCountryId,
 };

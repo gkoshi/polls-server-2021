@@ -1,7 +1,11 @@
+const shortid = require("shortid");
+
 const Agents = require("../models/agents");
 
 const createAgent = async (req, res, next) => {
-  const { name, phone, code } = req.body;
+  const { name, phone } = req.body;
+
+  const code = shortid.generate();
 
   try {
     await Agents.create({

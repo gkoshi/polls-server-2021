@@ -42,9 +42,7 @@ const createQuestion = async (req, res, next) => {
 
 const editQuestion = async (req, res, next) => {
   const { id } = req.params;
-  const {
-    question, city_id, country_id, category, range, answers
-  } = req.body;
+  const { question, city_id, country_id, category, range, answers } = req.body;
 
   let questionExists;
   try {
@@ -81,7 +79,7 @@ const editQuestion = async (req, res, next) => {
         where: { id },
       }
     );
-    await Answer.destroy({ where: { question_id: result.id }});
+    await Answer.destroy({ where: { question_id: result.id } });
     await Answer.bulkCreate(mappedAnswers);
   } catch (err) {
     console.log(err);

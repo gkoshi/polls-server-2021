@@ -1,10 +1,19 @@
-const USER_ROUTES_PATHS = {
-  REGISTER_USER: "/register-user",
-  LOGIN: "/login",
-  EDIT_USER: "/edit-user/:id",
-  DELETE_USER: "/delete-user",
-  GET_USER_BY_ID: "/user/:id",
-  GET_ALL_USERS: "/users",
+const ADMIN_ROUTES_PATHS = {
+  REGISTER_ADMIN: "/register-admin",
+  LOGIN: "/login-admin",
+  EDIT_ADMIN: "/edit-admin/:id",
+  DELETE_ADMIN: "/delete-admin/:id",
+  GET_ADMIN_BY_ID: "/admin/:id",
+  GET_ALL_ADMINS: "/admins",
+};
+
+const JOURNALIST_ROUTES_PATHS = {
+  REGISTER_JOURNALIST: "/register-journalist",
+  LOGIN: "/login-journalist",
+  EDIT_JOURNALIST: "/edit-journalist/:id",
+  DELETE_JOURNALIST: "/delete-journalist/:id",
+  GET_JOURNALIST_BY_ID: "/journalist/:id",
+  GET_ALL_JOURNALISTS: "/journalists",
 };
 
 const QUESTION_ROUTE_PATHS = {
@@ -32,12 +41,12 @@ const COUNTRY_ROUTE_PATHS = {
   GET_ALL_COUNTRIES: "/countries/all",
 };
 
-const ADDRESS_ROUTE_PATHS = {
-  CREATE_ADDRESS: "/address/create",
-  EDIT_ADDRESS: "/address/edit/:id",
-  DELETE_ADDRESS: "/address/delete/:id",
-  GET_ADDRESS_BY_ID: "/address/:id",
-  GET_ALL_ADDRESSES: "/addresses/all",
+const SETTLEMENT_ROUTE_PATHS = {
+  CREATE_SETTLEMENT: "/settlement/create",
+  EDIT_SETTLEMENT: "/settlement/edit/:id",
+  DELETE_SETTLEMENT: "/settlement/delete/:id",
+  GET_SETTLEMENT_BY_ID: "/settlement/:id",
+  GET_ALL_SETTLEMENTS: "/settlements/all",
 };
 
 const AGE_RANGE_ROUTE_PATHS = {
@@ -83,20 +92,26 @@ const AGENT_ROUTE_PATHS = {
   CREATE_AGENT: "/agent/create",
   EDIT_AGENT: "/agent/edit/:id",
   DELETE_AGENT: "/agent/delete/:id",
-  GET_AGENT_BY_ID: "/agent/:id",
   GET_ALL_AGENTS: "/agents/all",
+  GET_AGENT_BY_ID: "/agent/:id",
+};
+
+const UPLOAD_EXCEL_PATHS = {
+  UPLOAD_EXCEL: "/excel/upload",
 };
 
 module.exports = {
-  USER_ROUTES_PATHS,
+  ADMIN_ROUTES_PATHS,
   QUESTION_ROUTE_PATHS,
   CITY_ROUTE_PATHS,
   COUNTRY_ROUTE_PATHS,
-  ADDRESS_ROUTE_PATHS,
+  SETTLEMENT_ROUTE_PATHS,
   AGE_RANGE_ROUTE_PATHS,
   QUESTION_OPTIONS_ROUTE_PATHS,
   QUESTION_CATEGORY_ROUTE_PATHS,
   QUESTION_LIMIT_ROUTE_PATHS,
   ANSWER_ROUTE_PATHS,
   AGENT_ROUTE_PATHS,
+  UPLOAD_EXCEL_PATHS,
+  JOURNALIST_ROUTES_PATHS,
 };

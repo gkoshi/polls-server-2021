@@ -1,4 +1,4 @@
-const Address = require("../models/address");
+const Address = require("../models/settlement");
 
 const createAddress = async (req, res, next) => {
   const { city_id, country_id, name } = req.body;

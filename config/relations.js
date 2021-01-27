@@ -8,11 +8,10 @@ const Relations = (db) => {
   Country.hasMany(City, { sourceKey: "id", foreignKey: "country_id" });
   City.belongsTo(Country, { foreignKey: "country_id", targetKey: "id" });
 
-  Question.belongsTo(Category,  { foreignKey: "category", targetKey: "id" })
-  Question.belongsTo(Country,  { foreignKey: "country_id", targetKey: "id" })
-  Question.belongsTo(City,  { foreignKey: "city_id", targetKey: "id" })
-  Question.hasMany(Answer,  { foreignKey: "question_id", targetKey: "id" })
-
+  Question.belongsTo(Category, { foreignKey: "category", targetKey: "id" });
+  Question.belongsTo(Country, { foreignKey: "country_id", targetKey: "id" });
+  Question.belongsTo(City, { foreignKey: "city_id", targetKey: "id" });
+  Question.hasMany(Answer, { foreignKey: "question_id", targetKey: "id" });
 };
 
 module.exports = Relations;
