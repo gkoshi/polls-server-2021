@@ -58,15 +58,15 @@ const loginAdmin = async (req, res, next) => {
     return res.status(422).json({ message: "Invalid data" });
   }
 
-  if (!(await matchPassword(password, Admin.password))) {
+  if (!(await matchPassword(password, admin.password))) {
     return res.status(422).json({ message: "Invalid data" });
   }
 
   const token = generateToken({
-    id: Admin.id,
-    name: Admin.name,
-    lastname: Admin.lastname,
-    email: Admin.email,
+    id: admin.id,
+    name: admin.name,
+    lastname: admin.lastname,
+    email: admin.email,
   });
 
   res

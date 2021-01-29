@@ -1,6 +1,9 @@
 const { Op } = require("sequelize");
+const moment = require("moment");
 
 const Journalist = require("../models/journalist");
+const Country = require("../models/country");
+const City = require("../models/city");
 const generateToken = require("../utils/generate-token");
 const hashPassword = require("../utils/hash-password");
 const matchPassword = require("../utils/match-password");
@@ -33,6 +36,14 @@ const registerJournalist = async (req, res, next) => {
   // there is a user with this email
   if (emailExists) {
     return res.status(422).json({ message: "Email already exists" });
+  }
+
+  const wrongDates = moment(from).isAfter(moment(to));
+
+  if (wrongDates) {
+    return res
+      .status(422)
+      .json({ message: "Starting date can't be bigger than ending date" });
   }
 
   const hashedPassword = await hashPassword(password);
@@ -96,7 +107,20 @@ const loginJournalist = async (req, res, next) => {
 
 const editJournalist = async (req, res, next) => {
   const { id } = req.params;
-  const { name, lastname, email, username } = req.body;
+  const {
+    name,
+    lastname,
+    username,
+    email,
+    password,
+    phone,
+    country_id,
+    city_id,
+    gender,
+    question_number,
+    from,
+    to,
+  } = req.body;
 
   // check if email exists
   let emailExists;
@@ -105,7 +129,6 @@ const editJournalist = async (req, res, next) => {
       where: { email, id: { [Op.ne]: id } },
     });
   } catch (err) {
-    console.log(err);
     return res.status(400).json({ message: "Something went wrong" });
   }
 
@@ -114,13 +137,29 @@ const editJournalist = async (req, res, next) => {
     return res.status(422).json({ message: "Email already exists" });
   }
 
+  const wrongDates = moment(from).isAfter(moment(to));
+
+  if (wrongDates) {
+    return res
+      .status(422)
+      .json({ message: "Starting date can't be bigger than ending date" });
+  }
+
   try {
     await Journalist.update(
       {
         name,
         lastname,
-        email,
         username,
+        email,
+        password,
+        phone,
+        country_id,
+        city_id,
+        gender,
+        question_number,
+        from,
+        to,
       },
       {
         where: {
@@ -172,6 +211,7 @@ const getJournalistById = async (req, res, next) => {
   let journalist;
   try {
     journalist = await Journalist.findOne({
+      include: [Country, City],
       attributes: {
         exclude: ["password"],
       },

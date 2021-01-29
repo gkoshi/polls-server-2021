@@ -1,4 +1,4 @@
-const { check, validationResult } = require("express-validator");
+const { check } = require("express-validator");
 
 const { STRONG_PASSWORD } = require("../utils/regex");
 
@@ -14,7 +14,7 @@ const registerUserValidationRules = () => {
       const regex = new RegExp(STRONG_PASSWORD);
       if (!regex.test(password)) {
         throw new Error(
-          "Password must contain an uppercase letter, a number, a special character and should be between 6 and 16 characters"
+          "Password must contain a number, a special character and should be between 6 and 16 characters"
         );
       }
       return true;

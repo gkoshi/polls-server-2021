@@ -1,6 +1,6 @@
 const ADMIN_ROUTES_PATHS = {
   REGISTER_ADMIN: "/register-admin",
-  LOGIN: "/login-admin",
+  LOGIN: "/admin-login",
   EDIT_ADMIN: "/edit-admin/:id",
   DELETE_ADMIN: "/delete-admin/:id",
   GET_ADMIN_BY_ID: "/admin/:id",
@@ -13,7 +13,7 @@ const JOURNALIST_ROUTES_PATHS = {
   EDIT_JOURNALIST: "/edit-journalist/:id",
   DELETE_JOURNALIST: "/delete-journalist/:id",
   GET_JOURNALIST_BY_ID: "/journalist/:id",
-  GET_ALL_JOURNALISTS: "/journalists",
+  GET_ALL_JOURNALISTS: "/journalists/all",
 };
 
 const QUESTION_ROUTE_PATHS = {

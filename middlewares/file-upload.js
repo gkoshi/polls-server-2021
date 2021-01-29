@@ -48,5 +48,7 @@ const imageUpload = multer({
   },
 });
 
-exports.fileUpload = fileUpload;
-exports.imageUpload = imageUpload;
+module.exports = {
+  fileUpload,
+  imageUpload
+};
