@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const time = 60;
+const time = "36h";
 const secret = process.env.APP_SECRET;
 
 const generateToken = (data) => {
