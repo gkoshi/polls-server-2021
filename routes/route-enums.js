@@ -104,7 +104,8 @@ const UPLOAD_EXCEL_PATHS = {
 
 const MOBILE_PATHS = {
   REGISTER_USER: "/register",
-  SELECT_QUESTION_CATEGORY: "/select-question-category"
+  SELECT_QUESTION_CATEGORY: "/select-question-category",
+  QUESTION_CATEGORIES: "/question-categories"
 }
 
 module.exports = {

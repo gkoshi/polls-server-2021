@@ -1,5 +1,6 @@
 const MobileUser = require("../models/mobile");
 const Agent = require("../models/agents");
+const QuestionCategories = require("../models/question-categories");
 
 const generateToken = require("../utils/generate-token");
 
@@ -79,7 +80,22 @@ const selectQuestionCategory = async (req, res, next) => {
   res.status(200).json({ message: "Kategoria u selektua me sukses" });
 };
 
+const getAllQuestionCategories = async (req, res, next) => {
+  let questionCategories;
+  try {
+    questionCategories = await QuestionCategories.findAll();
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(400)
+      .json({ message: "Could not fetch all question categories" });
+  }
+
+  res.status(200).json({ questionCategories });
+};
+
 module.exports = {
   registerUser,
   selectQuestionCategory,
+  getAllQuestionCategories
 };
