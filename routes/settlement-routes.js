@@ -14,10 +14,7 @@ const { SETTLEMENT_ROUTE_PATHS } = require("./route-enums");
 
 const checkAuth = require("../middlewares/check-auth");
 
-router.get(
-  SETTLEMENT_ROUTE_PATHS.GET_SETTLEMENT_BY_COUNTRY_AND_CITY_ID,
-  getSettlementByCityId
-);
+router.get(SETTLEMENT_ROUTE_PATHS.GET_SETTLEMENT_BY_COUNTRY_AND_CITY_ID, getSettlementByCityId);
 
 router.use(checkAuth);
 
