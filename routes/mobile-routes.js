@@ -5,7 +5,7 @@ const checkMobileAuth = require("../middlewares/check-mobile-auth");
 const {
   registerUser,
   selectQuestionCategory,
-  getAllQuestionCategories
+  getAllQuestionCategories,
 } = require("../controllers/mobile-controller");
 const { MOBILE_PATHS } = require("./route-enums");
 

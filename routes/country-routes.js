@@ -14,7 +14,6 @@ const { validate } = require("../validators/validate");
 
 const checkAuth = require("../middlewares/check-auth");
 
-
 router.get(COUNTRY_ROUTE_PATHS.GET_ALL_COUNTRIES, getAllCountries);
 
 router.use(checkAuth);
@@ -26,7 +25,5 @@ router.put(COUNTRY_ROUTE_PATHS.EDIT_COUNTRY, validate, editCountry);
 router.delete(COUNTRY_ROUTE_PATHS.DELETE_COUNTRY, deleteCountry);
 
 router.get(COUNTRY_ROUTE_PATHS.GET_COUNTRY_BY_ID, getCountryById);
-
-
 
 module.exports = router;

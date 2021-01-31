@@ -15,11 +15,11 @@ const Relations = (db) => {
   Question.belongsTo(City, { foreignKey: "city_id", targetKey: "id" });
   Question.hasMany(Answer, { foreignKey: "question_id", targetKey: "id" });
 
-  Journalist.belongsTo(Country, { foreignKey: "country_id", targetKey: "id" })
-  Journalist.belongsTo(City, { foreignKey: "city_id", targetKey: "id" })
+  Journalist.belongsTo(Country, { foreignKey: "country_id", targetKey: "id" });
+  Journalist.belongsTo(City, { foreignKey: "city_id", targetKey: "id" });
 
-  Settlement.belongsTo(City, { foreignKey: "city_id", targetKey: "id" })
-  Settlement.belongsTo(Country, { foreignKey: "country_id", targetKey: "id" })
+  Settlement.belongsTo(City, { foreignKey: "city_id", targetKey: "id" });
+  Settlement.belongsTo(Country, { foreignKey: "country_id", targetKey: "id" });
 };
 
 module.exports = Relations;

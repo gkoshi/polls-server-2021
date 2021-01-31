@@ -10,13 +10,11 @@ const checkMobileAuth = async (req, res, next) => {
     const token = req.headers.authorization.split(" ")[1];
     const device_id = req.headers.device_id;
 
-    if (!token || !device_id)  {
+    if (!token || !device_id) {
       return res.status(403).json({ message: "Not authenticated" });
     }
 
-
     const decodedToken = jwt.verify(token, process.env.APP_SECRET);
-  
 
     let deviceIsMatch;
     try {
@@ -31,9 +29,9 @@ const checkMobileAuth = async (req, res, next) => {
       return res.status(403).json({ message: "Not authenticated" });
     }
 
-    if (!deviceIsMatch || (deviceIsMatch.device_id !== device_id)){
+    if (!deviceIsMatch || deviceIsMatch.device_id !== device_id) {
       return res.status(403).json({ message: "Not authenticated" });
-    };
+    }
 
     req.data = decodedToken;
   } catch (err) {

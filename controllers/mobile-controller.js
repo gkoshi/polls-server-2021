@@ -97,5 +97,5 @@ const getAllQuestionCategories = async (req, res, next) => {
 module.exports = {
   registerUser,
   selectQuestionCategory,
-  getAllQuestionCategories
+  getAllQuestionCategories,
 };

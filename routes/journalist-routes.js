@@ -25,7 +25,6 @@ router.post(
   registerJournalist
 );
 
-
 router.put(JOURNALIST_ROUTES_PATHS.EDIT_JOURNALIST, validate, editJournalist);
 
 router.delete(

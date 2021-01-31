@@ -29,20 +29,19 @@ router.post(
   createCityValidationRules(),
   validate,
   createCity
-  );
-  
-  router.put(
-    CITY_ROUTE_PATHS.EDIT_CITY,
-    editCityValidationRules(),
-    validate,
-    editCity
-    );
-    
-    router.delete(CITY_ROUTE_PATHS.DELETE_CITY, deleteCity);
-    
-    router.get(CITY_ROUTE_PATHS.GET_CITY_BY_ID, getCityById);
-    
-    router.get(CITY_ROUTE_PATHS.GET_ALL_CITIES, getAllCities);
+);
 
+router.put(
+  CITY_ROUTE_PATHS.EDIT_CITY,
+  editCityValidationRules(),
+  validate,
+  editCity
+);
+
+router.delete(CITY_ROUTE_PATHS.DELETE_CITY, deleteCity);
+
+router.get(CITY_ROUTE_PATHS.GET_CITY_BY_ID, getCityById);
+
+router.get(CITY_ROUTE_PATHS.GET_ALL_CITIES, getAllCities);
 
 module.exports = router;

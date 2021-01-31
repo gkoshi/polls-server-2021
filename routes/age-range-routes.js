@@ -14,6 +14,8 @@ const { validate } = require("../validators/validate");
 
 const checkAuth = require("../middlewares/check-auth");
 
+router.get(AGE_RANGE_ROUTE_PATHS.GET_ALL_AGE_RANGES, getAllAgeRanges);
+
 router.use(checkAuth);
 
 router.post(AGE_RANGE_ROUTE_PATHS.CREATE_AGE_RANGE, validate, createAgeRange);
@@ -24,6 +26,5 @@ router.delete(AGE_RANGE_ROUTE_PATHS.DELETE_AGE_RANGE, deleteAgeRange);
 
 router.get(AGE_RANGE_ROUTE_PATHS.GET_AGE_RANGE_BY_ID, getAgeRangeById);
 
-router.get(AGE_RANGE_ROUTE_PATHS.GET_ALL_AGE_RANGES, getAllAgeRanges);
 
 module.exports = router;

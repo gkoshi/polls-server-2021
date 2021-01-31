@@ -14,7 +14,10 @@ const { SETTLEMENT_ROUTE_PATHS } = require("./route-enums");
 
 const checkAuth = require("../middlewares/check-auth");
 
-router.get(SETTLEMENT_ROUTE_PATHS.GET_SETTLEMENT_BY_COUNTRY_AND_CITY_ID, getSettlementByCityId);
+router.get(
+  SETTLEMENT_ROUTE_PATHS.GET_SETTLEMENT_BY_COUNTRY_AND_CITY_ID,
+  getSettlementByCityId
+);
 
 router.use(checkAuth);
 
@@ -25,7 +28,6 @@ router.put(SETTLEMENT_ROUTE_PATHS.EDIT_SETTLEMENT, editSettlement);
 router.delete(SETTLEMENT_ROUTE_PATHS.DELETE_SETTLEMENT, deleteSettlement);
 
 router.get(SETTLEMENT_ROUTE_PATHS.GET_SETTLEMENT_BY_ID, getSettlementById);
-
 
 router.get(SETTLEMENT_ROUTE_PATHS.GET_ALL_SETTLEMENTS, getAllSettlements);
 
