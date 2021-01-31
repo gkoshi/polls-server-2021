@@ -11,6 +11,10 @@ const {
   getCityByCountryId,
 } = require("../controllers/city-controller");
 
+const checkAuth = require("../middlewares/check-auth");
+
+router.use(checkAuth);
+
 const {
   createCityValidationRules,
   editCityValidationRules,

@@ -45,6 +45,8 @@ const SETTLEMENT_ROUTE_PATHS = {
   CREATE_SETTLEMENT: "/settlement/create",
   EDIT_SETTLEMENT: "/settlement/edit/:id",
   DELETE_SETTLEMENT: "/settlement/delete/:id",
+  GET_SETTLEMENT_BY_COUNTRY_AND_CITY_ID:
+    "/settlement/bycountryandcityid/:country_id/:city_id",
   GET_SETTLEMENT_BY_ID: "/settlement/:id",
   GET_ALL_SETTLEMENTS: "/settlements/all",
 };
@@ -100,6 +102,11 @@ const UPLOAD_EXCEL_PATHS = {
   UPLOAD_EXCEL: "/excel/upload",
 };
 
+const MOBILE_PATHS = {
+  REGISTER_USER: "/register",
+  SELECT_QUESTION_CATEGORY: "/select-question-category"
+}
+
 module.exports = {
   ADMIN_ROUTES_PATHS,
   QUESTION_ROUTE_PATHS,
@@ -114,4 +121,5 @@ module.exports = {
   AGENT_ROUTE_PATHS,
   UPLOAD_EXCEL_PATHS,
   JOURNALIST_ROUTES_PATHS,
+  MOBILE_PATHS
 };

@@ -12,6 +12,10 @@ const {
 
 const { validate } = require("../validators/validate");
 
+const checkAuth = require("../middlewares/check-auth");
+
+router.use(checkAuth);
+
 router.post(AGENT_ROUTE_PATHS.CREATE_AGENT, validate, createAgent);
 
 router.put(AGENT_ROUTE_PATHS.EDIT_AGENT, validate, editAgent);

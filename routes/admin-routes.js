@@ -13,9 +13,13 @@ const {
 
 const { validate } = require("../validators/validate");
 
-router.post(ADMIN_ROUTES_PATHS.REGISTER_ADMIN, validate, registerAdmin);
+const checkAuth = require("../middlewares/check-auth");
 
 router.post(ADMIN_ROUTES_PATHS.LOGIN, validate, loginAdmin);
+
+router.use(checkAuth);
+
+router.post(ADMIN_ROUTES_PATHS.REGISTER_ADMIN, validate, registerAdmin);
 
 router.put(ADMIN_ROUTES_PATHS.EDIT_ADMIN, validate, editAdmin);
 

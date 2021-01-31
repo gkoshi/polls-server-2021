@@ -14,6 +14,7 @@ const questionRoutes = require("./question-routes");
 const adminRoutes = require("./admin-routes");
 const journalistRoutes = require("./journalist-routes");
 const uploadExcelRoutes = require("./upload-excel-routes");
+const mobileRoutes = require("./mobile-routes");
 
 router.use("/settlement", settlementRoutes);
 router.use("/age-range", ageRangeRoutes);
@@ -28,8 +29,6 @@ router.use("/question", questionRoutes);
 router.use("/admin", adminRoutes);
 router.use("/journalist", journalistRoutes);
 router.use("/excel", uploadExcelRoutes);
-router.get("/servertest", (req, res) => {
-  res.send("Server is up and running");
-});
+router.use("/mobile", mobileRoutes);
 
 module.exports = router;

@@ -12,6 +12,10 @@ const {
 
 const { validate } = require("../validators/validate");
 
+const checkAuth = require("../middlewares/check-auth");
+
+router.use(checkAuth);
+
 router.post(
   QUESTION_OPTIONS_ROUTE_PATHS.CREATE_QUESTION_OPTION,
   validate,

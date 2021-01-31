@@ -5,6 +5,7 @@ const Relations = (db) => {
   const Category = require("../models/question-categories");
   const Answer = require("../models/answers");
   const Journalist = require("../models/journalist");
+  const Settlement = require("../models/settlement");
 
   Country.hasMany(City, { sourceKey: "id", foreignKey: "country_id" });
   City.belongsTo(Country, { foreignKey: "country_id", targetKey: "id" });
@@ -16,6 +17,9 @@ const Relations = (db) => {
 
   Journalist.belongsTo(Country, { foreignKey: "country_id", targetKey: "id" })
   Journalist.belongsTo(City, { foreignKey: "city_id", targetKey: "id" })
+
+  Settlement.belongsTo(City, { foreignKey: "city_id", targetKey: "id" })
+  Settlement.belongsTo(Country, { foreignKey: "country_id", targetKey: "id" })
 };
 
 module.exports = Relations;

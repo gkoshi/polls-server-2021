@@ -12,6 +12,10 @@ const {
 
 const { validate } = require("../validators/validate");
 
+const checkAuth = require("../middlewares/check-auth");
+
+router.use(checkAuth);
+
 router.post(AGE_RANGE_ROUTE_PATHS.CREATE_AGE_RANGE, validate, createAgeRange);
 
 router.put(AGE_RANGE_ROUTE_PATHS.EDIT_AGE_RANGE, validate, editAgeRange);

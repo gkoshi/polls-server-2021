@@ -12,6 +12,10 @@ const {
 
 const { validate } = require("../validators/validate");
 
+const checkAuth = require("../middlewares/check-auth");
+
+router.use(checkAuth);
+
 router.post(COUNTRY_ROUTE_PATHS.CREATE_COUNTRY, validate, createCountry);
 
 router.put(COUNTRY_ROUTE_PATHS.EDIT_COUNTRY, validate, editCountry);

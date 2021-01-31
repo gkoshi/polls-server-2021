@@ -14,6 +14,10 @@ const { imageUpload } = require("../middlewares/file-upload");
 
 const { validate } = require("../validators/validate");
 
+const checkAuth = require("../middlewares/check-auth");
+
+router.use(checkAuth);
+
 router.post(
   QUESTION_ROUTE_PATHS.CREATE_QUESTION,
   imageUpload.single("image"),

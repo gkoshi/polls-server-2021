@@ -1,10 +1,12 @@
-const Address = require("../models/settlement");
+const Settlement = require("../models/settlement");
+const City = require("../models/city");
+const Country = require("../models/country");
 
-const createAddress = async (req, res, next) => {
+const createSettlement = async (req, res, next) => {
   const { city_id, country_id, name } = req.body;
 
   try {
-    await Address.create({
+    await Settlement.create({
       city_id,
       country_id,
       name,
@@ -14,16 +16,16 @@ const createAddress = async (req, res, next) => {
     return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(200).json({ message: "Address created successfully" });
+  res.status(200).json({ message: "Settlement created successfully" });
 };
 
-const editAddress = async (req, res, next) => {
+const editSettlement = async (req, res, next) => {
   const { id } = req.params;
   const { city_id, country_id, name } = req.body;
 
-  let address;
+  let settlement;
   try {
-    address = await Address.findOne({
+    settlement = await Settlement.findOne({
       where: { id },
     });
   } catch (err) {
@@ -31,12 +33,12 @@ const editAddress = async (req, res, next) => {
     return res.status(400).json({ message: "Something went wrong" });
   }
 
-  if (!address) {
-    return res.status(422).json({ message: "Address doesn't exist" });
+  if (!settlement) {
+    return res.status(422).json({ message: "Settlement doesn't exist" });
   }
 
   try {
-    await Address.update(
+    await Settlement.update(
       {
         city_id,
         country_id,
@@ -47,19 +49,18 @@ const editAddress = async (req, res, next) => {
       }
     );
   } catch (err) {
-    console.log(err);
     return res.status(400).json({ message: "Something went wrong" });
   }
 
-  res.status(201).json({ message: "Address updated successfully" });
+  res.status(201).json({ message: "Settlement updated successfully" });
 };
 
-const deleteAddress = async (req, res, next) => {
+const deleteSettlement = async (req, res, next) => {
   const { id } = req.params;
 
-  let address;
+  let settlement;
   try {
-    address = await Address.findOne({
+    settlement = await Settlement.findOne({
       where: { id },
     });
   } catch (err) {
@@ -67,12 +68,12 @@ const deleteAddress = async (req, res, next) => {
     return res.status(400).json({ message: "Something went wrong" });
   }
 
-  if (!address) {
-    return res.status(422).json({ message: "Address doesn't exist" });
+  if (!settlement) {
+    return res.status(422).json({ message: "Settlement doesn't exist" });
   }
 
   try {
-    await Address.destroy({
+    await Settlement.destroy({
       where: { id },
     });
   } catch (err) {
@@ -80,15 +81,16 @@ const deleteAddress = async (req, res, next) => {
     return res.status(400).json({ message: "Could not delete address" });
   }
 
-  res.status(200).json({ message: "Address deleted successfully" });
+  res.status(200).json({ message: "Settlement deleted successfully" });
 };
 
-const getAddressById = async (req, res, next) => {
+const getSettlementById = async (req, res, next) => {
   const { id } = req.params;
 
-  let address;
+  let settlement;
   try {
-    address = await Address.findOne({
+    settlement = await Settlement.findOne({
+      include: [City, Country],
       where: { id },
     });
   } catch (err) {
@@ -97,29 +99,44 @@ const getAddressById = async (req, res, next) => {
   }
   id;
   // there is a no user with this id
-  if (!address) {
-    return res.status(422).json({ message: "Address doesn't exist" });
+  if (!settlement) {
+    return res.status(422).json({ message: "Settlement doesn't exist" });
   }
 
-  res.status(200).json({ address });
+  res.status(200).json({ settlement });
 };
 
-const getAllAddresses = async (req, res, next) => {
-  let addresses;
+const getSettlementByCityId = async (req, res, next) => {
+  const { country_id, city_id } = req.params;
+
+  let settlements;
   try {
-    addresses = await Address.findAll();
+    settlements = await Settlement.findAll({ where: { country_id, city_id } });
   } catch (err) {
     console.log(err);
     return res.status(400).json({ message: "Could not fetch all addresses" });
   }
 
-  res.status(200).json({ addresses });
+  res.status(200).json({ settlements });
+};
+
+const getAllSettlements = async (req, res, next) => {
+  let settlements;
+  try {
+    settlements = await Settlement.findAll();
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ message: "Could not fetch all addresses" });
+  }
+
+  res.status(200).json({ settlements });
 };
 
 module.exports = {
-  createAddress,
-  editAddress,
-  deleteAddress,
-  getAddressById,
-  getAllAddresses,
+  createSettlement,
+  editSettlement,
+  deleteSettlement,
+  getSettlementById,
+  getSettlementByCityId,
+  getAllSettlements,
 };

@@ -13,13 +13,18 @@ const {
 
 const { validate } = require("../validators/validate");
 
+const checkAuth = require("../middlewares/check-auth");
+
+router.post(JOURNALIST_ROUTES_PATHS.LOGIN, validate, loginJournalist);
+
+router.use(checkAuth);
+
 router.post(
   JOURNALIST_ROUTES_PATHS.REGISTER_JOURNALIST,
   validate,
   registerJournalist
 );
 
-router.post(JOURNALIST_ROUTES_PATHS.LOGIN, validate, loginJournalist);
 
 router.put(JOURNALIST_ROUTES_PATHS.EDIT_JOURNALIST, validate, editJournalist);
 
