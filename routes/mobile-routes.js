@@ -11,7 +11,7 @@ const { MOBILE_PATHS } = require("./route-enums");
 
 router.post(MOBILE_PATHS.REGISTER_USER, registerUser);
 
-// router.use(checkMobileAuth);
+router.use(checkMobileAuth);
 
 router.put(MOBILE_PATHS.SELECT_QUESTION_CATEGORY, selectQuestionCategory);
 
