@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const app = express();
 
 // config
-app.use(cors());
+app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.static("uploads"));
 dotenv.config();
