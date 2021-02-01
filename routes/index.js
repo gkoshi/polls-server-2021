@@ -30,5 +30,8 @@ router.use("/admin", adminRoutes);
 router.use("/journalist", journalistRoutes);
 router.use("/excel", uploadExcelRoutes);
 router.use("/mobile", mobileRoutes);
+router.get("/servertest", (req, res) => {
+  res.send("Server is up and running");
+});
 
 module.exports = router;
